@@ -1,0 +1,10 @@
+# yarr! a pirate!
+
+# 2 bits/pixel
+-gB2
+
+# tiles
+-gt
+
+# dont include palette
+-p!

@@ -1,0 +1,297 @@
+# example script for level1
+# leave out the delta value to indicate immediate timing
+# map height = 1656
+
+message	Operation A\\\\Objectives:\\Locate the island base\\and destroy the\\prototype.
+~200
+spawn	-32,60,heli,heli1
+~210
+spawn	-32,48,heli,heli1
+~220
+spawn	-32,20,heli,heli1
+~280
+spawn	255,32,heli,helileft
+~290
+spawn	255,32,heli,helilefts
+~300
+spawn	255,32,heli,helileft
+
+~350
+spawn	-32,20,tank,lefttank_fire
+spawn	255,20,tank,righttank_fire
+spawn	-30,0,tank,lefttank
+spawn	255,0,tank,righttank_fire
+spawn	-25,-20,tank,lefttank
+~360
+spawn	255,-20,tank,righttank_far
+spawn	64,-32,heli,helitop
+~380
+spawn	80,-32,heli,helitop
+~400
+spawn	128,-32,heli,helitop
+~420
+spawn	255,32,heli,helilefts
+~450
+spawn	255,32,heli,helileft
+~480
+spawn	64,-32,tank,stilltank
+~500
+spawn	100,-32,tank,stilltank
+spawn	200,-32,tank,stilltank_fire
+~550
+spawn	100,-16,jet,toy
+spawn	80,-32,jet,toy
+spawn	60,-48,jet,toy
+spawn	40,-64,jet,toy
+spawn	120,-16,jet,toy
+spawn	140,-32,jet,toy
+spawn	160,-48,jet,toy
+spawn	180,-64,jet,toy
+~600
+spawn	-64,10,bigplane,bigplane1
+~750
+spawn	300,40,bigplane,bigplane2
+spawn	-20,20,heli,heli1_short
+~760
+spawn	-20,50,heli,heli1_short
+~770
+spawn	-20,80,heli,heli1_short
+~900
+null
+~1000
+spawn	132,-32,tank,tankgodown
+spawn	-32,32,heli,helirights
+spawn	-16,56,heli,helirights
+spawn	-48,80,heli,helirights
+~1048
+spawn	-32,48,heli,heli1_short
+spawn	60,-32,heli,helitop
+spawn	100,-32,heli,helitop
+spawn	140,-32,heli,helitop
+spawn	20,-64,tank,stilltank
+~1060
+spawn	255,32,heli,helileft
+~1070
+spawn	255,32,heli,helilefts
+~1080
+spawn	255,32,heli,helileft
+spawn	255,16,tank,righttank_fire
+~1128
+spawn	128,-32,tank,tankgodown
+
+~1160
+spawn	48,-8,crate,toyscript
+spawn	72,-8,crates,toyscript
+~1176
+spawn	56,-40,warehouse,ware_power
+spawn	136,-40,warehouse,ware_bomb
+spawn	176,-16,barrels,toyscript
+spawn	192,-8,barrel,toyscript
+~1184
+spawn	255,24,tank,righttank_fire
+spawn	-32,32,tank,lefttank_fire
+~1272
+spawn	208,-8,crates,toyscript
+~1280
+spawn	192,-8,crate,toyscript
+~1288
+spawn	72,-8,crates,toyscript
+spawn	88,-24,barrels,toyscript
+spawn	112,-16,barrels,toyscript
+spawn	136,-40,warehouse,toyscript
+spawn	200,-8,crates,toyscript
+~1296
+
+spawn	255,24,tank,righttank_fire
+spawn	-32,32,tank,lefttank_fire
+
+~1540
+spawn	0,0,bigtank,toyscript
+end
+
+@toyscript
+halt
+
+#----------------------------------------------
+# fly to the right and exit bottom
+#--------------------------------------------
+@heli1
+movexy	200,20
+aimm
+~40
+aimm
+~130
+moveya	200
+aima	128
+~240
+remove
+halt
+
+#----------------------------------------------
+# fly to the right and exit bottom
+# stops short
+#--------------------------------------------
+@heli1_short
+movexy	40,20
+aimm
+~130
+moveya	200
+aima	128
+~240
+remove
+halt
+
+#--------------------------------------------------
+# fly across screen right->left
+#--------------------------------------------------
+@helileft
+movexy	-200,0
+aima	192
+~60
+movexy	-200,0
+~160
+remove
+halt
+
+#--------------------------------------------------
+# fly across screen right->left and fire a shot down-left
+#--------------------------------------------------
+@helilefts
+movexy	-200,0
+aima	192
+~60
+firea	150
+movexy	-200,0
+~160
+remove
+halt
+
+#--------------------------------------------------
+# fly across screen right->left and fire a shot down
+#--------------------------------------------------
+@helirights
+movexy	200,0
+aima	64
+~60
+firea	128
+movexy	200,0
+~160
+remove
+halt
+
+#-----------------------------------------------------
+# heli flying top->bottom
+#-----------------------------------------------------
+@helitop
+movexy	0,240
+aima	128
+~160
+remove
+halt
+
+#---------------------------------------------------
+# tank that's sitting - and fires 1 shot
+#---------------------------------------------------
+@stilltank_fire
+aimm
+~120
+firem
+halt
+
+#---------------------------------------------------
+# tank that's sitting and aiming
+#---------------------------------------------------
+@stilltank
+aimm
+halt
+
+# and firing-------------
+@stilltank_fire
+aimm
+~50
+firem
+halt
+
+#--------------------------------------
+# tank that rolls in from the right and attacks
+#--------------------------------------
+@righttank_fire
+aimm
+move	6, 60
+~40
+firem
+halt
+
+@righttank
+aimm
+move	6, 60
+halt
+@righttank_far
+aimm
+move	6, 100
+halt
+
+#---------------------------------
+# tank that rolls in from the left and attacks
+#----------------------------------
+@lefttank_fire
+aimm
+move	2, 60
+~40
+firem
+halt
+@lefttank
+aimm
+move	2, 60
+halt
+
+#----------------------------------
+# tank that goes down and attacks
+#----------------------------------
+@tankgodown
+aima	128
+move	4, 60
+~40
+firem
+halt
+
+@bigplane1
+move	80, 40
+~200
+firem
+move	70, 40
+~400
+move	60, 40
+firem
+~600
+move	20, 40
+~840
+remove
+halt
+
+@bigplane2
+move	176, 40
+~200
+firem
+move	186, 40
+~400
+move	196, 40
+firem
+~600
+move	236, 40
+~840
+move	236, 40
+~920
+remove
+halt
+
+@toy
+halt
+
+@ware_bomb
+item	1
+halt
+
+@ware_power
+item	2
+halt

@@ -1,0 +1,57 @@
+# welcome to outer space
+
+message	Final Operation\\\\Objective:\\Eliminate the evil\\mastermind.
+~80
+spawn	-32,16,invader,toy
+spawn	255,32,invader,toy
+~100
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+~120
+spawn	-32,16,invader,toy
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+~140
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+~160
+spawn	-32,16,invader,toy
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+~180
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+~200
+spawn	-32,16,invader,toy
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+spawn	255,96,invader,toy
+spawn	-32,128,invader,toy
+~220
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+spawn	255,96,invader,toy
+spawn	-32,128,invader,toy
+~240
+spawn	-32,16,invader,toy
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+spawn	255,96,invader,toy
+spawn	-32,128,invader,toy
+~260
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+spawn	255,96,invader,toy
+spawn	-32,128,invader,toy
+~280
+spawn	-32,16,invader,toy
+spawn	255,32,invader,toy
+spawn	-32,64,invader,toy
+spawn	255,96,invader,toy
+spawn	-32,128,invader,toy
+~400
+spawn	0,0,tom,toy
+end
+
+@toy
+halt

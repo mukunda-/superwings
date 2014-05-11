@@ -1,0 +1,434 @@
+# operation B
+# playscript
+
+message	Operation B\\\\Invade the enemy HQ\\and neutralize\\their leader.
+
+~240
+spawn	176,-16,barrels,toy
+spawn	144,-24,crate,toy
+spawn	168,-24,crates,toy
+~264
+spawn	128,-8,barrel,toy
+spawn	176,-8,crates,toy
+spawn	-32,24,tank,tank1
+spawn	-32,-8,tank,tank2
+~272
+spawn	144,-40,warehouse,warehouse_powerup
+spawn	184,-8,crate,toy
+spawn	176,-16,crate,toy
+~376
+spawn	56,-40,heli,heli_flydown_shootright
+spawn	184,-40,heli,heli_flydown_shootleft
+~464
+spawn	-64,24,bigplane,bigplane_left
+~504
+spawn	255,80,heli,heli_flyleft_stopmiddle_fire
+spawn	255,48,heli,heli_flyleft_stopmore_fire
+spawn	255,16,heli,heli_flyleft_stopleft_fire
+~568
+spawn	16,-32,tank,tank_movedown_fire
+spawn	48,-32,tank,tank_movedown_fire2
+~632
+spawn	255,56,heli,heli_flyleft_across_earlyshot
+spawn	-32,24,heli,heli_flyright_across
+~666
+null
+# onoes my game is cursed
+~680
+spawn	255,48,heli,heli_flyleft_stopleft_fire2
+spawn	-32,16,heli,heli_flyright_fire
+~728
+spawn	255,40,heli,heli_flyleft_across
+spawn	-32,16,tank,tank2
+spawn	255,16,tank,tank3
+~768
+spawn	120,-32,heli,heli_flydown_across
+~784
+spawn	88,-32,heli,heli_flydown_across
+spawn	156,-32,heli,heli_flydown_across
+~800
+spawn	56,-32,heli,heli_flydown_across
+spawn	192,-32,heli,heli_flydown_across
+~816
+spawn	24,-32,heli,heli_flydown_across
+spawn	224,-32,heli,heli_flydown_across
+~880
+spawn	-20,20,tank,tank_doubleblast_right
+spawn	255,20,tank,tank_doubleblast_left
+~888
+spawn	16,-40,warehouse,warehouse_bomb
+spawn	72,-40,warehouse,warehouse_empty
+spawn	128,-40,warehouse,warehouse_powerup
+spawn	112,-8,crates,toy
+spawn	104,-16,crate,toy
+~952
+spawn	32,-16,tank,tank_without_driver
+spawn	56,-16,tank,tank_without_driver
+spawn	80,-16,tank,tank_without_driver
+spawn	104,-16,tank,tank_without_driver
+~968
+spawn	128,-16,barrels,toy
+spawn	144,-16,barrels,toy
+spawn	128,-24,barrel,toy
+spawn	184,-40,tank,tank_movedown_fire
+~1016
+spawn	-32,24,heli,heli1_short
+spawn	-32,80,heli,heli1_short2
+~1040
+spawn	255,8,tank,tank_doubleblast_left
+~1048
+spawn	32,-16,barrels,toy
+spawn	24,-16,crate,toy
+spawn	24,-24,barrel,toy
+spawn	32,-24,barrel,toy
+spawn	128,-8,crates,toy
+spawn	120,-16,crates,toy
+~1064
+spawn	56,-64,bighouse,warehouse_bomb
+spawn	144,-64,bighouse,warehouse_powerup
+spawn	200,-8,crate,toy
+~1112
+spawn	280,32,bigplane,bigplane_right
+~1144
+spawn	120,-32,heli,heli_flydown_across
+spawn	24,-16,barrel,toy
+~1160
+spawn	88,-32,heli,heli_flydown_across
+spawn	156,-32,heli,heli_flydown_across
+~1176
+spawn	56,-32,heli,heli_flydown_across
+spawn	192,-32,heli,heli_flydown_across
+~1192
+spawn	24,-32,heli,heli_flydown_across
+spawn	224,-32,heli,heli_flydown_across
+~1240
+spawn	-40,64,bigplane,bigplane_left
+~1376
+spawn	255,64,heli,heli_flyleft_stopleft_fire2
+spawn	-32,32,heli,heli_flyright_fire
+~1512
+spawn	255,64,heli,heli_flyleft_stopleft_fire2
+spawn	-32,32,heli,heli_flyright_fire
+~1600
+spawn	0,0,prototype,toy
+end
+
+@toy
+halt
+
+#-----------------------------
+@tank1
+#-----------------------------
+# tank that moves right and stops
+
+move	2,120
+halt
+
+#-----------------------------
+@tank2
+#-----------------------------
+# tank that moves right and fires (stops a little shorter too)
+
+aima	110
+move	2,100
+~50
+firem
+halt
+
+#-----------------------------
+@tank3
+#-----------------------------
+# reverse of tank2
+
+aima	146
+move	6,100
+~50
+firem
+halt
+
+#--------------------------------
+@tank_doubleblast_right
+#--------------------------------
+aima	128
+move	2,100
+~30
+firem
+~70
+firem
+halt
+
+#--------------------------------
+@tank_doubleblast_left
+#--------------------------------
+aima	128
+move	6,100
+~30
+firem
+~70
+firem
+halt
+
+
+#-------------------------------------
+@tank_movedown_fire
+#-------------------------------------
+aima	128
+move	4,60
+~80
+firem
+halt
+
+#-------------------------------------
+@tank_movedown_fire2
+#-------------------------------------
+aima	100
+move	4,60
+~20
+firem
+~60
+aima	128
+~80
+firem
+halt
+
+#-----------------------------------
+@tank_without_driver
+#------------------------------------
+aima	0
+move	0,0
+halt
+
+#-----------------------------
+@warehouse_powerup
+#-----------------------------
+# warehouse - drops powerup
+item	1
+halt
+
+#-----------------------------
+@warehouse_bomb
+#-----------------------------
+# warehouse - drops powerup
+item	2
+halt
+
+#-----------------------------
+@warehouse_empty
+#-----------------------------
+# warehouse - drops powerup
+item	0
+halt
+
+#==============================================================
+#==============================================================
+# HELICOPTERS
+#==============================================================
+#==============================================================
+
+#-------------------------------------------------
+# helicopter that flys down and shoots down-left
+#--------------------------------------------------
+@heli_flydown_shootleft
+movexy	0,250
+aima	128
+~30
+firea	160
+~120
+remove
+halt
+
+#-------------------------------------------------
+# helicopter that flys down and shoots down-right
+#--------------------------------------------------
+@heli_flydown_shootright
+movexy	0,250
+aima	128
+~30
+firea	96
+~120
+remove
+halt
+
+@heli_flyleft_stopmiddle_fire
+movexy	-136,0
+aima	192
+~60
+aima	150
+~70
+aima	128
+~80
+firea	128
+~120
+aima	0
+movexy	0,-200
+~170
+remove
+halt
+
+@heli_flyleft_stopmore_fire
+movexy	-176,0
+aima	192
+~60
+aima	150
+~80
+aima	128
+~90
+firea	128
+~130
+aima	0
+movexy	0,-200
+~180
+remove
+halt
+
+@heli_flyleft_stopleft_fire
+movexy	-216,0
+aima	192
+~70
+aima	150
+~90
+aima	128
+~120
+firea	128
+~140
+aima	0
+movexy	0,-200
+~190
+remove
+halt
+
+#-----------------------------------------
+@heli_flyleft_across_earlyshot
+#-----------------------------------------
+movexy	-300,0
+aima	192
+~40
+firea	128
+~150
+remove
+halt
+
+#-----------------------------------------
+@heli_flyright_across
+#-----------------------------------------
+movexy	300,0
+aima	64
+~150
+remove
+halt
+
+#-----------------------------------------
+@heli_flyleft_across
+#-----------------------------------------
+movexy	-300,0
+aima	192
+~150
+remove
+halt
+
+#-----------------------------------------
+@heli_flyright_fire
+#-----------------------------------------
+movexy	300,0
+aima	64
+~20
+firem	106
+~150
+remove
+halt
+
+#-------------------------------------------
+@heli_flyleft_stopleft_fire2
+#------------------------------------------
+movexy	-216,0
+aima	192
+~20
+firea	150
+~70
+aima	150
+~90
+aima	128
+~120
+firea	128
+~140
+aima	0
+movexy	0,-200
+~190
+remove
+halt
+
+#-------------------------------------------
+@heli_flydown_across
+#------------------------------------------
+movexy	0,220
+aima	128
+~150
+remove
+halt
+
+#----------------------------------------------
+# fly to the right and exit bottom
+# stops short
+#--------------------------------------------
+@heli1_short
+movexy	40,20
+aimm
+~130
+moveya	200
+aima	128
+~240
+remove
+halt
+
+#----------------------------------------------
+# fly to the right and exit bottom
+# stops short and fires a shot
+#--------------------------------------------
+@heli1_short2
+movexy	40,20
+aimm
+~80
+firem
+~130
+moveya	200
+aima	128
+~240
+remove
+halt
+
+#=========================================================================
+#=========================================================================
+
+@bigplane_left
+move	80, 40
+~200
+firem
+move	70, 40
+~400
+move	60, 40
+firem
+~600
+move	20, 40
+~840
+null
+~1020
+remove
+halt
+#---------------------------------------
+
+
+@bigplane_right
+move	176, 40
+~200
+firem
+move	186, 40
+~400
+move	196, 40
+firem
+~600
+move	236, 40
+~840
+move	236, 40
+~920
+remove
+halt
